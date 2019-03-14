@@ -2,7 +2,7 @@ import logging
 
 from flask_restplus import Api
 from flask_restplus import reqparse
-import settings
+# import settings
 
 log = logging.getLogger(__name__)
 
@@ -21,6 +21,6 @@ def default_error_handler(e):
     message = 'An unhandled exception occurred.'
     log.exception(message)
 
-    if not settings.FLASK_DEBUG:
-        return {'message': message}, 500
+    # if not settings.FLASK_DEBUG:
+    return {'message': message}, 500
 

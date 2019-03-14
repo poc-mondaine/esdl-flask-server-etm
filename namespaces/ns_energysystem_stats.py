@@ -1,7 +1,7 @@
 import logging
 from flask import request
 from flask_restplus import Resource
-from restplus import api
+from namespaces import api
 
 # ESDL modules
 from energy_system_handler import EnergySystemHandler
