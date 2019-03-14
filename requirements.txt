@@ -1,0 +1,5 @@
+flask
+flask_restplus==0.10.0
+flask_cors
+restplus
+
