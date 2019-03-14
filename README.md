@@ -10,7 +10,7 @@ Installation steps:
 
 # Usage
 
-Use for example postman to generate an HTTP POST request
+Use for example [Postman](https://www.getpostman.com/downloads/) to generate an HTTP POST request
 
 - body must contain the ESDL energy system description
 - headers: Content-Type: application/xml
