@@ -4,7 +4,7 @@ from flask_restplus import Resource
 from namespaces import api
 
 # ESDL modules
-from energy_system_handler import EnergySystemHandler
+from esdl_handler import energy_system_handler
 
 log = logging.getLogger(__name__)
 ns1 = api.namespace('EnergySystemStats', description='ESDL EnergySystem Statistics')
@@ -29,7 +29,8 @@ class Count_PV_parcs(Resource):
         request_data = request.get_data()
         request_data_string = request_data.decode()
 
-        es = EnergySystemHandler(request_data_string)
+        es = energy_system_handler.EnergySystemHandler()
+        es.load_from_string(request_data_string)
         pv_parc_list = es.get_assets_of_type(es.esdl.PVParc)
         number_of_PV_parcs = len(pv_parc_list)
 

@@ -3,7 +3,7 @@ from time import sleep
 from pyecore.resources import ResourceSet, URI
 from pyecore.utils import DynamicEPackage, alias
 from pyecore.resources.resource import HttpURI
-from xmlresource import XMLResource
+from .xmlresource import XMLResource
 from pyecore.notification import EObserver
 import uuid
 from io import BytesIO
@@ -12,9 +12,8 @@ from io import BytesIO
 class EnergySystemHandler:
     """Class to handle (load, read, and update) an ESDL Energy System"""
 
-    def __init__(self, esdlstr):
+    def __init__(self):
         self.esdl, self.rset = self.init_model()
-        self.es = self.load_from_string(esdlstr)
         print('\nEnergy system initialized!')
 
 
