@@ -145,6 +145,15 @@ class EnergySystemHandler:
                 assets.append(current_asset)
         return assets
 
+    # Get a list of potentials of a specific ESDL type in the main instance's area
+    def get_potentials_of_type(self, esdl_type):
+        potentials = []
+
+        for current_potential in self.es.instance[0].area.potential:
+            if isinstance(current_potential, esdl_type):
+                potentials.append(current_potential)
+        return potentials
+
     # returns a generator of all assets of a specific type. Not only the ones defined in  the main Instance's Area
     # e.g. QuantityAndUnits can be defined in the KPI of an Area or in the EnergySystemInformation object
     # this function returns all of them at once

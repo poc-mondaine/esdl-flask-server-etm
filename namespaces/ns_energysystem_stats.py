@@ -20,19 +20,29 @@ class EnergySystem_Statistics(Resource):
         """
         # :param area_type: the area type (e.g. municipality)
 
-        return 'Hello world'
+        return 'Hello, world!'
 
 
-@ns1.route('/count_pv_parcs')
-class Count_PV_parcs(Resource):
+@ns1.route('/total_costs')
+class Total_Costs(Resource):
     def post(self):
         request_data = request.get_data()
         request_data_string = request_data.decode()
 
         es = energy_system_handler.EnergySystemHandler()
         es.load_from_string(request_data_string)
-        pv_parc_list = es.get_assets_of_type(es.esdl.PVParc)
-        number_of_PV_parcs = len(pv_parc_list)
+        total_costs = es.get_kpi_by_name('KPI Total costs')
 
-        return('Number of PV parcs: {}'.format(number_of_PV_parcs))
+        return('Total costs: {}'.format(total_costs.value))
 
+@ns1.route('/co2_emissions')
+class Co2_Emissions(Resource):
+    def post(self):
+        request_data = request.get_data()
+        request_data_string = request_data.decode()
+
+        es = energy_system_handler.EnergySystemHandler()
+        es.load_from_string(request_data_string)
+        co2_emissions = es.get_kpi_by_name('KPI CO2-emissions')
+
+        return('CO2-emissions: {}'.format(co2_emissions.value))
